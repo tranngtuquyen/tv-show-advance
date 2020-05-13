@@ -1,0 +1,11 @@
+.showList {
+    padding-bottom: 10px;
+}
+.ratingBox {
+    width: 210px;
+    height: 20px;
+    background-color: #F8F8F8;
+}
+.ratingBox span {
+    float: right;
+}

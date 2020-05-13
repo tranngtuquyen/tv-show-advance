@@ -1,0 +1,11 @@
+<div *ngIf="episodeList.length" class="container">
+    <div *ngFor="let episode of episodeList" class="row">
+        <div class="col-md-5">
+            <img [src]='episode.image' />
+        </div>
+        <div class="col-md-12">
+            Episode {{episode.episode}}: {{episode.name}}
+            <span [innerHtml]="episode.description"></span>
+        </div>
+    </div>
+</div>

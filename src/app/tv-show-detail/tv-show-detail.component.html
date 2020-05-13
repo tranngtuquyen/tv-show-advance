@@ -1,0 +1,20 @@
+<div *ngIf="show" class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <img [src]='show.image' /> <br />
+        </div>
+        <div class="col-md-9">
+            {{show.name}} <br />
+            Rating: {{show.rating}} <br />
+            Language: {{show.language}} <br />
+            Genres: <span *ngFor="let genre of show.genres">{{genre}} | </span> <br />
+        </div>
+        <div class="col-md-12">
+            Description: <span [innerHtml]='show.description'></span> <br />
+            <span *ngFor="let season of show.seasons">
+                <button (click)="getEpisodeList(season.id)">{{season.name}}</button>
+            </span>
+        </div>
+    </div>
+</div>
+<app-season-detail [episodeList]="episodesList"></app-season-detail>
