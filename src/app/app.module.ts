@@ -10,6 +10,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { ShowListComponent } from './show-list/show-list.component';
 import { EpisodeDetailComponent } from './episode-detail/episode-detail.component';
+import { AiringShowsComponent } from './airing-shows/airing-shows.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTableModule} from '@angular/material/table';
+
+
 
 @NgModule({
   declarations: [
@@ -18,12 +23,15 @@ import { EpisodeDetailComponent } from './episode-detail/episode-detail.componen
     SeasonDetailComponent,
     NavigationBarComponent,
     ShowListComponent,
-    EpisodeDetailComponent
+    EpisodeDetailComponent,
+    AiringShowsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatTableModule
   ],
   providers: [TvShowService],
   bootstrap: [AppComponent]

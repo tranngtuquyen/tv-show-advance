@@ -1,1 +1,12 @@
-<p>episode-detail works!</p>
+<div *ngIf="episode" class="container">
+    <div class="episodeImage text-center">
+        <img [src]="episode.image" style="width: 780px;"/>
+    </div>
+    <div class="text-center">
+        <span style="font-size: 2.0em">Season {{episode.season}} - Episode {{episode.episode}}: {{episode.name}}</span>
+        
+    </div>
+    <div>
+        <span [innerHtml]="episode.description"></span>
+    </div>
+</div>

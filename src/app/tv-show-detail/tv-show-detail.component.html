@@ -4,15 +4,16 @@
             <img [src]='show.image' /> <br />
         </div>
         <div class="col-md-9">
-            {{show.name}} <br />
+            <span style="font-size: 2.0em;font-weight: bolder;">{{show.name}}</span> <br />
             Rating: {{show.rating}} <br />
             Language: {{show.language}} <br />
             Genres: <span *ngFor="let genre of show.genres">{{genre}} | </span> <br />
+            Cast: <span *ngFor="let person of show.cast">{{person}} | </span>
         </div>
         <div class="col-md-12">
             Description: <span [innerHtml]='show.description'></span> <br />
-            <span *ngFor="let season of show.seasons">
-                <button (click)="getEpisodeList(season.id)">{{season.name}}</button>
+            <span *ngFor="let season of show.seasons; index as i">
+                <button (click)="getEpisodeList(season)">Season {{i + 1}}</button>
             </span>
         </div>
     </div>

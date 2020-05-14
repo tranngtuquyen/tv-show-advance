@@ -1,10 +1,10 @@
 <div *ngIf="episodeList.length" class="container">
     <div *ngFor="let episode of episodeList" class="row">
         <div class="col-md-5">
-            <img [src]='episode.image' />
+            <a routerLink="/episode/{{episode.id}}"><img [src]='episode.image' /></a>
         </div>
         <div class="col-md-12">
-            Episode {{episode.episode}}: {{episode.name}}
+            <span><b>Episode {{episode.episode}}: {{episode.name}}</b></span>
             <span [innerHtml]="episode.description"></span>
         </div>
     </div>
