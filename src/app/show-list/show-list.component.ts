@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {IEpisode, ISeason, ITVShow} from '../itvshow';
 import {TvShowService} from '../tv-show.service';
 
@@ -8,15 +8,10 @@ import {TvShowService} from '../tv-show.service';
   styleUrls: ['./show-list.component.css']
 })
 export class ShowListComponent implements OnInit {
-  showList: ITVShow[] = [];
+  @Input() showList: ITVShow[];
+  
   constructor(private showService: TvShowService) { }
 
   ngOnInit(): void {
-    this.getAllShows();
   }
-
-  getAllShows() {
-    this.showService.getAllShows().subscribe(data => this.showList = data)
-  }
-
 }

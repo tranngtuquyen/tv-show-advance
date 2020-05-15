@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import {IEpisode, ITVShow, ISeason} from './itvshow';
+import {IEpisode, ITVShow, ISeason, IAiringShow} from './itvshow';
 import { HttpClient } from '@angular/common/http';
 
-import {map} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
+import { Subject, Observable } from 'rxjs';
 
 interface ITvShowData {
   id: number;
@@ -18,7 +19,8 @@ interface ITvShowData {
   _embedded: {
     seasons: Array<{id: number}>,
     cast: Array<{person: {name: string}}>
-  }
+  };
+  network: { name: string};
 }
 
 interface IEpisodeData {
@@ -33,10 +35,20 @@ interface IEpisodeData {
   season: number
 }
 
+interface IAiringShowData {
+  season: number;
+  number: number;
+  airtime: string;
+  runtime: number;
+  show: ITvShowData;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class TvShowService {
+  searchResult: Subject<ITVShow[]> = new Subject<ITVShow[]>();
+  searchResult$ = this.searchResult.asObservable();
 
   constructor(private http: HttpClient) { }
 
@@ -66,11 +78,12 @@ export class TvShowService {
       name: data.name,
       description: data.summary,
       image: data.image? data.image.medium : "",
-      rating: data.rating.average,
+      rating: data.rating? data.rating.average: null,
       language: data.language,
       genres: data.genres,
       seasons: data._embedded ? this.transformToSeason(data._embedded.seasons) : [],
-      cast: data._embedded ? this.transformToCast(data._embedded.cast): []
+      cast: data._embedded ? this.transformToCast(data._embedded.cast): [],
+      network: data.network? data.network.name : ''
     };
   }
 
@@ -115,7 +128,26 @@ export class TvShowService {
     let dateAsString = `${year}-${month}-${day}`;
     
     const url = `http://api.tvmaze.com/schedule?country=US&date=${dateAsString}`;
-    return this.http.get<ITvShowData[]>(url).pipe(map(data => data.map(d => this.transformToIShow(d))));
+
+    return this.http.get<IAiringShowData[]>(url).pipe(map(data => data.map(d => this.transformToIAiringShow(d))))
+  }
+
+  transformToIAiringShow(data: IAiringShowData) : IAiringShow {
+    return ({
+      season: data.season,
+      epsiode: data.number,
+      airtime: data.airtime,
+      runtime: data.runtime,
+      show: this.transformToIShow(data.show),
+      network: data.show.network.name
+    });
+  }
+
+  getSearchShows(term: string) {
+    const url = `http://api.tvmaze.com/search/shows?q=${term}`;
+    console.log(url);
+    return this.http.get<Array<{show: ITvShowData}>>(url).pipe(map(data => data.map(d => this.transformToIShow(d.show))),
+    tap(x => this.searchResult.next(x)));
   }
 
 }

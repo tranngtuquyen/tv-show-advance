@@ -13,6 +13,9 @@ import { EpisodeDetailComponent } from './episode-detail/episode-detail.componen
 import { AiringShowsComponent } from './airing-shows/airing-shows.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTableModule} from '@angular/material/table';
+import { SearchComponent } from './search/search.component';
+import { FormsModule } from '@angular/forms';
+import { MainViewComponent } from './main-view/main-view.component';
 
 
 
@@ -24,14 +27,17 @@ import {MatTableModule} from '@angular/material/table';
     NavigationBarComponent,
     ShowListComponent,
     EpisodeDetailComponent,
-    AiringShowsComponent
+    AiringShowsComponent,
+    SearchComponent,
+    MainViewComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatTableModule
+    MatTableModule,
+    FormsModule
   ],
   providers: [TvShowService],
   bootstrap: [AppComponent]

@@ -8,8 +8,18 @@ export interface ITVShow {
     genres: string[];
     seasons: number[];
     cast: string[];
+    network: string;
     //each show has a list of seasons
     //get API for show for specific showId: http://api.tvmaze.com/shows/:showID?embed=seasons
+}
+
+export interface IAiringShow {
+    season: number,
+    epsiode: number,
+    airtime: string,
+    runtime: number,
+    show: ITVShow,
+    network: string
 }
 
 export interface ISeason {

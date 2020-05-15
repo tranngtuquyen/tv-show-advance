@@ -4,12 +4,12 @@
         <a class="navbar-brand" href="#">TV Show</a>
       </div>
       <ul class="nav navbar-nav">
-        <li><a href="#">TV Shows</a></li>
-        <li><a href="#">Airing Now</a></li>
+        <li><a routerLink="">TV Shows</a></li>
+        <li><a routerLink="/airing">Airing Now</a></li>
       </ul>
-      <form class="form-inline form-group-sm searchbox">
-        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <div class="form-inline form-group-sm searchbox">
+        <input class="form-control" [(ngModel)]="searchValue" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" (click)="goToSearch(searchValue)">Search</button>
+      </div>
     </div>
 </nav>
