@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {IEpisode, ITVShow, ISeason, IAiringShow} from './itvshow';
+import {IEpisode, ITVShow, ISeason, IAiringShow, IAiringShowTest} from './itvshow';
 import { HttpClient } from '@angular/common/http';
 
 import {map, tap} from 'rxjs/operators';
@@ -142,6 +142,14 @@ export class TvShowService {
       network: data.show.network.name
     });
   }
+
+  // createSchedule(data: IAiringShow[]): IAiringShowTest[] {
+  //   let arr = [];
+  //   data.map(d => {
+  //     let obj = 
+  //   });
+  //   return arr;
+  // }
 
   getSearchShows(term: string) {
     const url = `http://api.tvmaze.com/search/shows?q=${term}`;

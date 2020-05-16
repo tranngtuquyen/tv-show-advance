@@ -22,6 +22,21 @@ export interface IAiringShow {
     network: string
 }
 
+
+export interface IAiringShowTest {
+    network: string,
+    "00.00": ITVShow,
+    "09.00": ITVShow,
+    "09.30": ITVShow,
+    "10.00": ITVShow,
+    "10.30": ITVShow,
+    "11.00": ITVShow,
+    "12.00": ITVShow,
+    "12.30": ITVShow,
+    "13.00": ITVShow,
+    "13.30": ITVShow,
+}
+
 export interface ISeason {
     id: number;
     name: string;
