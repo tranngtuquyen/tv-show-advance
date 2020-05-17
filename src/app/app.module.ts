@@ -17,7 +17,10 @@ import { SearchComponent } from './search/search.component';
 import { FormsModule } from '@angular/forms';
 import { MainViewComponent } from './main-view/main-view.component';
 
-
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatListModule} from '@angular/material/list';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,11 @@ import { MainViewComponent } from './main-view/main-view.component';
     HttpClientModule,
     BrowserAnimationsModule,
     MatTableModule,
-    FormsModule
+    FormsModule,
+    MatToolbarModule,
+    MatListModule,
+    MatButtonModule,
+    MatIconModule
   ],
   providers: [TvShowService],
   bootstrap: [AppComponent]

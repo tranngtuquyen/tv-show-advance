@@ -2,3 +2,20 @@
     float: right;
     padding-top: 7px;
 }
+.fill-space {
+    flex: 1 1 auto;
+}
+.menu-spacer {
+    margin-right: 10px;
+}
+.menu-bar {
+    min-height: auto;
+}
+.brand {
+    font-family: 'Londrina Shadow', cursive;
+    font-size: 2.5em;
+    color: crimson;
+}
+.nav-bar {
+    margin-bottom: 20px;
+}
