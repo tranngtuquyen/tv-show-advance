@@ -1,11 +1,15 @@
 <div *ngIf="episodeList.length" class="container">
-    <div *ngFor="let episode of episodeList" class="row">
-        <div class="col-md-5">
-            <a routerLink="/episode/{{episode.id}}"><img [src]='episode.image' /></a>
-        </div>
-        <div class="col-md-12">
-            <span><b>Episode {{episode.episode}}: {{episode.name}}</b></span>
-            <span [innerHtml]="episode.description"></span>
+    <div class="row">
+        <div *ngFor="let episode of episodeList" class="col-md-3 episode">
+            <div>
+                <a routerLink="/episode/{{episode.id}}"><img [src]='episode.image' /></a>
+            </div>
+            <div>
+                <span><b>Episode {{episode.episode}}: {{episode.name}}</b></span>
+                <span [innerHtml]="episode.description" class="episode-detail"></span>
+            </div>
+            
         </div>
     </div>
+    
 </div>

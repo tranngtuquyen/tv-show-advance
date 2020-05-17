@@ -12,10 +12,18 @@
         </div>
         <div class="col-md-12">
             Description: <span [innerHtml]='show.description'></span> <br />
-            <span *ngFor="let season of show.seasons; index as i">
-                <button (click)="getEpisodeList(season)">Season {{i + 1}}</button>
-            </span>
         </div>
+        <div class="seasons">
+            <mat-form-field>
+                <mat-label>Seasons</mat-label>
+                <mat-select [(value)]="selectedSeason">
+                    <span *ngFor="let season of show.seasons; index as i">
+                        <mat-option [value]="season" (click)="getEpisodeList(season)">Season {{i + 1}}</mat-option>
+                    </span>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        
     </div>
 </div>
 <app-season-detail [episodeList]="episodesList"></app-season-detail>

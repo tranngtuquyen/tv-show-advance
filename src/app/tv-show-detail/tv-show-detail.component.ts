@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class TvShowDetailComponent implements OnInit {
   show: ITVShow;
   episodesList: IEpisode[] = [];
+  selectedSeason: number;
 
   constructor(
     private showService: TvShowService,
@@ -35,5 +36,4 @@ export class TvShowDetailComponent implements OnInit {
       console.log(this.episodesList);
     }
   )}
-
 }
