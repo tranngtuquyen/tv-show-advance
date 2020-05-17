@@ -18,6 +18,9 @@ export class EpisodeDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getEpisode();
+    this.route.params.subscribe(routeParams => {
+      this.getEpisode();
+    });
   }
 
   getEpisode() {

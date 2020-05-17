@@ -2,4 +2,21 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 20px;
+}
+.episode {
+    width: 800px;
+    height: 580px;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+}
+.prevButton {
+    margin-right: 20px;
+    width: 160px;
+}
+.nextButton {
+    float: right;
+    width: 160px;
 }

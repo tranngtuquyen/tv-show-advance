@@ -1,12 +1,19 @@
 <div *ngIf="episode" class="container">
-    <div class="episodeImage text-center">
-        <img [src]="episode.image" style="width: 780px;"/>
-    </div>
-    <div class="text-center">
-        <span style="font-size: 2.0em">Season {{episode.season}} - Episode {{episode.episode}}: {{episode.name}}</span>
-        
-    </div>
+    <mat-card class="episode">
+        <div class="episodeImage text-center">
+            <img [src]="episode.image" style="width: 780px;"/>
+        </div>
+        <div class="text-center">
+            <span style="font-size: 2.0em">Season {{episode.season}} - Episode {{episode.episode}}: {{episode.name}}</span>
+            
+        </div>
+        <div>
+            <span [innerHtml]="episode.description"></span>
+        </div>
+    </mat-card>
     <div>
-        <span [innerHtml]="episode.description"></span>
+        <button mat-raised-button routerLink="/episode/{{episode.id - 1}}" class="prevButton">&larr; Previous Episode</button>
+        <button mat-raised-button routerLink="/episode/{{episode.id + 1}}" class="nextButton">Next Episode &rarr;</button>
     </div>
+    
 </div>
