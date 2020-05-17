@@ -1,30 +1,14 @@
-
-<!--
-
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">LaFilm</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li><a routerLink="">TV Shows</a></li>
-      <li><a routerLink="/airing">Airing Now</a></li>
-    </ul>
-    <div class="form-inline form-group-sm searchbox">
-      <input class="form-control" [(ngModel)]="searchValue" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success" (click)="goToSearch(searchValue)">Search</button>
-    </div>
-  </div>
-</nav>
--->
-
 <mat-toolbar color="secondary" class="nav-bar">
   <div> 
     <span routerLink="" class="brand">LAFILM</span>
     <span class="menu-spacer"></span>
   </div>
   <span class="nav navbar-nav fill-space menu-bar">
-    <button mat-button routerLink="">TV Shows</button>
+    <button mat-button [matMenuTriggerFor]="shows">TV Shows</button>
+    <mat-menu #shows="matMenu">
+      <button mat-menu-item *ngFor="let genre of genres" routerLink="/shows/{{genre | lowercase}}">{{genre}}</button>
+    </mat-menu>
+
     <button mat-button routerLink="/airing">Airing Now</button>
   </span>
   <div class="form-inline form-group-sm searchbox">

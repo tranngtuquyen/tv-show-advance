@@ -9,7 +9,10 @@ import {TvShowService} from '../tv-show.service';
 })
 export class NavigationBarComponent implements OnInit {
   searchValue: string;
-
+  genres: string[] = [
+    'Action', 'Anime', 'Comedy', 'Crime', 'Drama', 'Family', 'Fantasy', 'Horror',
+    'Mystery', 'Romance', 'Supernatural', 'Thriller'
+  ];
   constructor(
     private router: Router,
     private service: TvShowService

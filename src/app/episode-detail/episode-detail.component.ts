@@ -20,9 +20,7 @@ export class EpisodeDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getEpisode();
     this.route.params.subscribe(routeParams => {
-      this.seasonId = +routeParams['seasonId'];
-      const episodeId = +routeParams['episodeId'];
-      this.showService.getEpisodeFromId(episodeId, this.seasonId).subscribe(data => this.episode = data[0]);
+      this.getEpisode();
     });
   }
 
@@ -31,5 +29,4 @@ export class EpisodeDetailComponent implements OnInit {
     const episodeId = +this.route.snapshot.paramMap.get('episodeId');
     this.showService.getEpisodeFromId(episodeId, this.seasonId).subscribe(data => this.episode = data[0]);
   }
-
 }

@@ -6,6 +6,7 @@ import { EpisodeDetailComponent } from './episode-detail/episode-detail.componen
 import { AiringShowsComponent } from './airing-shows/airing-shows.component';
 import { SearchComponent } from './search/search.component';
 import { MainViewComponent } from './main-view/main-view.component';
+import { GenreComponent } from './genre/genre.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: 'show/:id', component: TvShowDetailComponent},
   {path: 'season/:seasonId/episode/:episodeId', component: EpisodeDetailComponent},
   {path: 'airing', component: AiringShowsComponent},
-  {path: 'search/:term', component: SearchComponent }
+  {path: 'search/:term', component: SearchComponent },
+  {path: 'shows/:genre', component: GenreComponent}
 ];
 
 @NgModule({

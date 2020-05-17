@@ -25,8 +25,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { TruncateTextPipe } from './truncate-text.pipe';
-
-
+import {MatMenuModule} from '@angular/material/menu';
+import { GenreComponent } from './genre/genre.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +40,7 @@ import { TruncateTextPipe } from './truncate-text.pipe';
     SearchComponent,
     MainViewComponent,
     TruncateTextPipe,
+    GenreComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +55,8 @@ import { TruncateTextPipe } from './truncate-text.pipe';
     MatIconModule,
     MatSelectModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    MatMenuModule
   ],
   providers: [TvShowService],
   bootstrap: [AppComponent]
