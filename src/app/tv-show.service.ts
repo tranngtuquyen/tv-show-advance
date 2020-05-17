@@ -32,7 +32,12 @@ interface IEpisodeData {
     original: string
   };
   summary: string;
-  season: number
+  season: number,
+  _embedded: {
+    show: {
+      id: number
+    }
+  }
 }
 
 interface IAiringShowData {
@@ -67,9 +72,10 @@ export class TvShowService {
     return this.http.get<IEpisodeData[]>(url).pipe(map(data => this.transformToIEpisodeList(data)));
   }
 
-  getEpisodeFromId(episodeId: number) {
-    const url = `http://api.tvmaze.com/episodes/${episodeId}`;
-    return this.http.get<IEpisodeData>(url).pipe(map(data => this.transformToIEpisode(data)));
+  getEpisodeFromId(episodeId: number, seasonId: number) {
+    const fullUrl = `http://api.tvmaze.com/seasons/${seasonId}/episodes`;
+    return this.http.get<IEpisodeData[]>(fullUrl).pipe(map(data => this.transformToIEpisodeList(data)
+    .filter(d => d.id == episodeId)));
   }
 
   transformToIShow(data: ITvShowData): ITVShow {
@@ -96,11 +102,23 @@ export class TvShowService {
   }
 
   transformToIEpisodeList(data: IEpisodeData[]): IEpisode[] {
-    return data.map(d => {
+    return data.map((d,i, arr) => {
       var episode = this.transformToIEpisode(d);
       episode.image = d.image? d.image.medium: '';
+      episode.preEpisode = this.getPreEpisodeFromSeasonIndex(arr, i);
+      episode.nextEpisode = this.getNextEpisodeFromSeasonIndex(arr, i);
       return episode;
     });
+  }
+
+  getPreEpisodeFromSeasonIndex(data: IEpisodeData[], index: number) {
+    let preEpisode = index > 0 ? data[index - 1]: null;
+    return preEpisode ? preEpisode.id : null;
+  }
+
+  getNextEpisodeFromSeasonIndex(data: IEpisodeData[], index: number) {
+    let nextEpisode = index < data.length - 1 ? data[index + 1]: null;
+    return nextEpisode ? nextEpisode.id : null;
   }
 
   transformToIEpisode(d: IEpisodeData): IEpisode {
@@ -109,8 +127,10 @@ export class TvShowService {
       episode: d.number? d.number : null,
       season: d.season,
       image: d.image? d.image.original: '',
-      description: d.summary}
-    );
+      description: d.summary,
+      preEpisode: null,
+      nextEpisode: null
+    });
   }
 
   getAllShows() {
@@ -128,7 +148,6 @@ export class TvShowService {
     let dateAsString = `${year}-${month}-${day}`;
     
     const url = `http://api.tvmaze.com/schedule?country=US&date=${dateAsString}`;
-    console.log(url);
     return this.http.get<IAiringShowData[]>(url).pipe(map(data => data.map(d => this.transformToIAiringShow(d))))
   }
 
@@ -145,7 +164,6 @@ export class TvShowService {
 
   getSearchShows(term: string) {
     const url = `http://api.tvmaze.com/search/shows?q=${term}`;
-    console.log(url);
     return this.http.get<Array<{show: ITvShowData}>>(url).pipe(map(data => data.map(d => this.transformToIShow(d.show))),
     tap(x => this.searchResult.next(x)));
   }

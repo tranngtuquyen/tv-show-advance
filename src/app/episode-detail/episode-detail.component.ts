@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EpisodeDetailComponent implements OnInit {
   episode: IEpisode;
+  seasonId: number;
 
   constructor(
     private showService: TvShowService,
@@ -19,13 +20,16 @@ export class EpisodeDetailComponent implements OnInit {
   ngOnInit(): void {
     this.getEpisode();
     this.route.params.subscribe(routeParams => {
-      this.getEpisode();
+      this.seasonId = +routeParams['seasonId'];
+      const episodeId = +routeParams['episodeId'];
+      this.showService.getEpisodeFromId(episodeId, this.seasonId).subscribe(data => this.episode = data[0]);
     });
   }
 
   getEpisode() {
-    const id = +this.route.snapshot.paramMap.get('id'); 
-    this.showService.getEpisodeFromId(id).subscribe(data => this.episode = data);
+    this.seasonId = +this.route.snapshot.paramMap.get('seasonId');
+    const episodeId = +this.route.snapshot.paramMap.get('episodeId');
+    this.showService.getEpisodeFromId(episodeId, this.seasonId).subscribe(data => this.episode = data[0]);
   }
 
 }

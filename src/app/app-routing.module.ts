@@ -11,7 +11,7 @@ import { MainViewComponent } from './main-view/main-view.component';
 const routes: Routes = [
   {path: '', component: MainViewComponent},
   {path: 'show/:id', component: TvShowDetailComponent},
-  {path: 'episode/:id', component: EpisodeDetailComponent},
+  {path: 'season/:seasonId/episode/:episodeId', component: EpisodeDetailComponent},
   {path: 'airing', component: AiringShowsComponent},
   {path: 'search/:term', component: SearchComponent }
 ];

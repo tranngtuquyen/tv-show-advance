@@ -34,6 +34,8 @@ export interface IEpisode {
     episode: number;
     image: string;
     description: string;
+    preEpisode: number;
+    nextEpisode: number;
     //get API for list of episodes for a specific seasonId: http://api.tvmaze.com/seasons/:seasonId/episodes
     //get API for specific episode ID: http://api.tvmaze.com/episodes/:episodeId
 }

@@ -12,6 +12,7 @@ export class TvShowDetailComponent implements OnInit {
   show: ITVShow;
   episodesList: IEpisode[] = [];
   selectedSeason: number;
+  selectedSeasonId: number;
 
   constructor(
     private showService: TvShowService,
@@ -33,6 +34,7 @@ export class TvShowDetailComponent implements OnInit {
       data.shift();
       }
       this.episodesList = data;
+      this.selectedSeasonId = seasonId;
       console.log(this.episodesList);
     }
   )}

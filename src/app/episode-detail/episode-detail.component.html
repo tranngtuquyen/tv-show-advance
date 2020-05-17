@@ -12,8 +12,8 @@
         </div>
     </mat-card>
     <div>
-        <button mat-raised-button routerLink="/episode/{{episode.id - 1}}" class="prevButton">&larr; Previous Episode</button>
-        <button mat-raised-button routerLink="/episode/{{episode.id + 1}}" class="nextButton">Next Episode &rarr;</button>
+        <button mat-raised-button routerLink="/season/{{seasonId}}/episode/{{episode.preEpisode}}" class="prevButton" [disabled]="!episode.preEpisode">&larr; Previous Episode</button>
+        <button mat-raised-button routerLink="/season/{{seasonId}}/episode/{{episode.nextEpisode}}" class="nextButton" [disabled]="!episode.nextEpisode">Next Episode &rarr;</button>
     </div>
     
 </div>

@@ -7,6 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SeasonDetailComponent implements OnInit {
   @Input() episodeList;
+  @Input() seasonId;
   constructor() { }
 
   ngOnInit(): void {
