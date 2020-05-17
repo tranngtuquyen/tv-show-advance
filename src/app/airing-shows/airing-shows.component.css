@@ -19,3 +19,8 @@ table {
 .mat-header-row {
     display: table-row;
 }
+.airing-show {
+    font-family: 'Limelight', cursive;
+    font-size: 2em;
+    margin: 10px 10px;
+}

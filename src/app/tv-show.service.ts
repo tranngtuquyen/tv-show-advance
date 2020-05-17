@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {IEpisode, ITVShow, ISeason, IAiringShow, IAiringShowTest} from './itvshow';
+import {IEpisode, ITVShow, ISeason, IAiringShow} from './itvshow';
 import { HttpClient } from '@angular/common/http';
 
 import {map, tap} from 'rxjs/operators';
@@ -119,7 +119,7 @@ export class TvShowService {
   }
 
   getAiringShows() {
-    const date = new Date("2015-05-05");
+    const date = new Date();
     let year = date.getFullYear();
     let monthNumber = date.getMonth() + 1;
     let month = monthNumber < 10 ? `0${monthNumber}` : `${monthNumber}`;
@@ -128,7 +128,7 @@ export class TvShowService {
     let dateAsString = `${year}-${month}-${day}`;
     
     const url = `http://api.tvmaze.com/schedule?country=US&date=${dateAsString}`;
-
+    console.log(url);
     return this.http.get<IAiringShowData[]>(url).pipe(map(data => data.map(d => this.transformToIAiringShow(d))))
   }
 
@@ -139,17 +139,9 @@ export class TvShowService {
       airtime: data.airtime,
       runtime: data.runtime,
       show: this.transformToIShow(data.show),
-      network: data.show.network.name
+      network: data.show.network? data.show.network.name: ""
     });
   }
-
-  // createSchedule(data: IAiringShow[]): IAiringShowTest[] {
-  //   let arr = [];
-  //   data.map(d => {
-  //     let obj = 
-  //   });
-  //   return arr;
-  // }
 
   getSearchShows(term: string) {
     const url = `http://api.tvmaze.com/search/shows?q=${term}`;

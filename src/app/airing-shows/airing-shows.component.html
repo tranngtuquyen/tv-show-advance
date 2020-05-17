@@ -1,26 +1,6 @@
-<!--
-  <table mat-table [dataSource]="airingShows" class="mat-elevation-z8">
-    <ng-container matColumnDef="h0">
-        <th mat-header-cell *matHeaderCellDef> 00.00 </th>
-        <td mat-cell *matCellDef="let element"> {{element["h0"].network}} </td>
-    </ng-container>
-    <ng-container matColumnDef="h1">
-        <th mat-header-cell *matHeaderCellDef> 00.00 </th>
-        <td mat-cell *matCellDef="let element"> {{element["h1"].network}} </td>
-    </ng-container>
-    <ng-container matColumnDef="h2">
-        <th mat-header-cell *matHeaderCellDef> 00.00 </th>
-        <td mat-cell *matCellDef="let element"> {{element["h2"].network}} </td>
-    </ng-container>
-    <ng-container matColumnDef="h3">
-        <th mat-header-cell *matHeaderCellDef> 00.00 </th>
-        <td mat-cell *matCellDef="let element"> {{element["h3"].network}} </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumnsTest"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumnsTest;"></tr>
-</table>
--->
+<div class="airing-show">
+  Show Schedule
+</div>
 <table mat-table [dataSource]="airingShows" class="mat-elevation-z8">
   
   <div *ngFor="let col of displayedColumns; index as i">

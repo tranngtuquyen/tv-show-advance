@@ -4,14 +4,14 @@
             <img [src]='show.image' /> <br />
         </div>
         <div class="col-md-9">
-            <span style="font-size: 2.0em;font-weight: bolder;">{{show.name}}</span> <br />
-            Rating: {{show.rating}} <br />
-            Language: {{show.language}} <br />
-            Genres: <span *ngFor="let genre of show.genres">{{genre}} | </span> <br />
-            Cast: <span *ngFor="let person of show.cast">{{person}} | </span>
+            <div class="show-name">{{show.name}}</div>
+            <i>Rating: </i> {{show.rating}} <br />
+            <i>Language: </i> {{show.language}} <br />
+            <i>Genres: </i> <span *ngFor="let genre of show.genres">{{genre}} | </span> <br />
+            <i>Cast: </i> <span *ngFor="let person of show.cast">{{person}} | </span>
         </div>
         <div class="col-md-12">
-            Description: <span [innerHtml]='show.description'></span> <br />
+            <i>Description: </i> <span [innerHtml]='show.description'></span> <br />
         </div>
         <div class="seasons">
             <mat-form-field>
