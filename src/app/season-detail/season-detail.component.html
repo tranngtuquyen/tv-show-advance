@@ -6,7 +6,7 @@
             </div>
             <div>
                 <span><b>Episode {{episode.episode}}: {{episode.name}}</b></span>
-                <span [innerHtml]="episode.description" class="episode-detail"></span>
+                <span [innerHtml]="episode.description | truncateText: 250" class="episode-detail"></span>
             </div>
             
         </div>
