@@ -27,6 +27,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { TruncateTextPipe } from './truncate-text.pipe';
 import {MatMenuModule} from '@angular/material/menu';
 import { GenreComponent } from './genre/genre.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { GenreComponent } from './genre/genre.component';
     MatSelectModule,
     MatCardModule,
     MatGridListModule,
-    MatMenuModule
+    MatMenuModule,
+    FlexLayoutModule
   ],
   providers: [TvShowService],
   bootstrap: [AppComponent]

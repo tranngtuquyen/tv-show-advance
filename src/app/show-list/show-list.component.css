@@ -9,3 +9,9 @@
 .ratingBox span {
     float: right;
 }
+.show-image {
+    place-content: center center;
+}
+.show-card-inner {
+    margin-bottom: 20px;
+}
