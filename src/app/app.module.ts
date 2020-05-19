@@ -28,6 +28,7 @@ import { TruncateTextPipe } from './truncate-text.pipe';
 import {MatMenuModule} from '@angular/material/menu';
 import { GenreComponent } from './genre/genre.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MyFavoriteComponent } from './my-favorite/my-favorite.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MainViewComponent,
     TruncateTextPipe,
     GenreComponent,
+    MyFavoriteComponent,
   ],
   imports: [
     BrowserModule,

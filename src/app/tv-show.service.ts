@@ -54,8 +54,41 @@ interface IAiringShowData {
 export class TvShowService {
   searchResult: Subject<ITVShow[]> = new Subject<ITVShow[]>();
   searchResult$ = this.searchResult.asObservable();
+  private myFavorite: ITVShow[] = [];
+  private favoriteTags: number[] = [];
 
   constructor(private http: HttpClient) { }
+
+  getFavoriteList() {
+    return this.myFavorite;
+  }
+
+  addToFavoriteList(showId: number) {
+    this.getShowFromId(showId).subscribe(data => this.myFavorite.push(data));
+  }
+
+  removeFromFavoriteList(showId: number) {
+    this.getShowFromId(showId).subscribe(data => {
+      let index = this.myFavorite.findIndex(d => d.id === showId);
+      if ( index !== -1) {
+        this.myFavorite.splice(index,1);
+      }
+      console.log(this.myFavorite);
+    });
+  }
+
+  getFavoriteTags() {
+    return this.favoriteTags;
+  }
+
+  addToFavoriteTags(showId: number) {
+    this.favoriteTags.push(showId);
+  }
+
+  removeFromFavoriteTags(showId: number) {
+    let index = this.favoriteTags.findIndex(i => i == showId);
+    this.favoriteTags.splice(index, 1);
+  }
 
   getShowFromId(showId: number) {
     const url = `http://api.tvmaze.com/shows/${showId}?embed[]=seasons&embed[]=cast`;
